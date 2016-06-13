@@ -1,0 +1,52 @@
+---
+title: "Repdata"
+author: "Rui La"
+date: "June 12, 2016"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+First we unzip the code and read the csv file into `df`. As the missing value of
+df can be ignored, the df can be completed to complete df
+
+```{r}
+unzip("activity.zip")
+df <- read.csv("activity.csv")
+completedf <- df[complete.cases(df),]
+head (completedf)
+summary(completedf)
+```
+
+Then we can calculate the total of each day using `aggregate`
+
+```{r pressure, echo=TRUE}
+stepByDate <- aggregate(steps ~ date, data = completedf, FUN = sum)
+barplot(stepByDate$steps, xlab = "date", ylab = "steps", 
+        names.arg = stepByDate$date)
+
+dailymean <- aggregate(steps ~ date, data = completedf, FUN = mean)
+dailymedian <- aggregate(steps ~date, data = completedf, FUN = median)
+mmdaily <- merge(dailymean, dailymedian, by.x = "date", by.y = "date")
+
+##stepstatis <- data.frame(c)
+```
+
+Mean total number of steps is 
+
+```{r}
+mean (stepByDate$steps)
+```
+
+Median total number of steps is 
+
+```{r}
+median (stepByDate$steps)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent 
+printing of the R code that generated the plot.
