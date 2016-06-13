@@ -1,11 +1,11 @@
 ---
-title: "Repdata"
+        title: "Repdata"
 author: "Rui La"
 date: "June 12, 2016"
 output: pdf_document
 ---
-
-```{r setup, include=FALSE}
+        
+        ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
@@ -115,11 +115,11 @@ and “weekend” indicating whether a given date is a weekday or weekend day.
 
 ```{r}
 WeekPart <- function(date) {
-    if(weekdays(as.Date(date)) %in% c("Saturday", "Sunday")) {
-        day <- "Weekend"
-    } else {
-        day <- "Weekday"
-    }
+        if(weekdays(as.Date(date)) %in% c("Saturday", "Sunday")) {
+                day <- "Weekend"
+        } else {
+                day <- "Weekday"
+        }
 }
 filledDF$weekPart <- as.factor(sapply(filledDF$date, WeekPart))
 ```
@@ -138,11 +138,11 @@ meanSteps <- dcast(melted, weekPart+interval~variable, mean)
 library(lattice)
 
 xyplot(steps~interval|weekPart,
-    data=meanSteps,
-    xlab="Interval",
-    ylab="Number of steps",
-    type="l",
-    layout=c(1,2)
+       data=meanSteps,
+       xlab="Interval",
+       ylab="Number of steps",
+       type="l",
+       layout=c(1,2)
 )
 ```
 
