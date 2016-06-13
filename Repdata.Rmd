@@ -2,7 +2,7 @@
 title: "Repdata"
 author: "Rui La"
 date: "June 12, 2016"
-output: pdf_document
+output: html_document
 ---
 
 ```{r setup, include=FALSE}
